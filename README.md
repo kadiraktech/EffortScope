@@ -1,0 +1,104 @@
+# EffortScope – Helpdesk Effort & Resource Analytics
+
+EffortScope, customer support ticket verilerini kullanarak destek operasyonlarinda eforu, kaynak kullanimini ve musteri segmentlerini analiz eden bir veri bilimi projesidir. Proje; metin yogunlugu, oncelik seviyesi, zaman sinyalleri ve musteri bazli farkliliklar uzerinden hem analitik icgoru uretir hem de efor tahminleme yaklasimini gosterir.
+
+## Proje Amaci
+
+Bu proje su sorulara veri odakli cevap uretmeyi hedefler:
+
+- Hangi ticket tipleri daha yuksek operasyonel efor gerektiriyor?
+- Hangi musteri segmentleri daha fazla kaynak tuketiyor?
+- Haftanin hangi gunlerinde ticket yogunlugu artiyor?
+- Ticket complexity seviyesi eforu nasil etkiliyor?
+
+## Veri Seti
+
+Projede Kaggle uzerindeki `tobiasbueck/multilingual-customer-support-tickets` veri seti kullanilmistir.
+
+Veri seti tipik olarak su alanlari icerir:
+
+- `body`
+- `subject`
+- `answer`
+- `priority`
+- `type`
+- `language`
+- `tag_1` ... `tag_8`
+
+Veri setinde gercek `effort_hours` bulunmadigi icin proje kapsaminda sentetik ama tutarli hedef ve destekleyici feature'lar uretilmistir.
+
+## Turetilen Ana Kolonlar
+
+- `effort_hours`: Ana hedef degisken, sentetik efor modeli
+- `resolution_time`: Eforla iliskili sentetik cozum suresi
+- `description_length`: Ticket aciklamasinin karakter uzunlugu
+- `word_count`: Ticket aciklamasindaki kelime sayisi
+- `complexity_score`: Aciklama yogunlugu ve priority bazli karmasiklik skoru
+- `customer_name`: Musteri bazli segmentasyon icin sentetik kurumsal etiket
+- `created_day_of_week`: Ticket'in haftanin hangi gunune dustugu
+- `is_weekend`: Hafta sonu bayragi
+
+## Notebook Kapsami
+
+`EffortScope.ipynb` icinde su adimlar yer alir:
+
+- KaggleHub ile otomatik veri indirme
+- Kullanilan CSV'yi proje klasorune kopyalama
+- Kolon esleme ve fallback mekanizmasi
+- Veri temizleme ve eksik veri analizi
+- Feature engineering
+- NLP analizi
+- EDA, Pareto, heatmap ve boxplot
+- KMeans ile musteri segmentasyonu
+- Regresyon modelleme ve model karsilastirma
+- Feature importance, insights, oneriler ve executive summary
+
+## Modelleme
+
+Kullanilan modeller:
+
+- Linear Regression
+- Random Forest
+- Gradient Boosting
+
+Kullanilan metrikler:
+
+- MAE
+- RMSE
+- R2
+
+Son stabil notebook sonucuna gore en iyi model **Gradient Boosting** olmustur.
+
+- MAE: yaklasik `0.335`
+- RMSE: yaklasik `0.400`
+- R2: yaklasik `0.910`
+
+Bu performans, modelin tanimlanan sentetik efor mantigini basarili bicimde ogrendigini gosterir. Ancak `effort_hours` sentetik olarak uretildigi icin sonuclar gercek operasyonel performansin birebir temsili olarak degil, analitik demonstrasyon olarak yorumlanmalidir.
+
+Teknik not: RMSE compatibility helper was used to support different scikit-learn versions.
+
+## Ana Bulgular
+
+- `complexity_score` ile `effort_hours` arasinda guclu pozitif iliski vardir.
+- Uzun ve detayli aciklamalar daha yuksek efor gerektirir.
+- Priority seviyesi arttikca ortalama efor da artar.
+- En yuksek ticket hacmi `Wednesday` gununde gorulmustur.
+- Bazi musteri segmentleri digerlerine gore daha yuksek ortalama efor tuketmektedir.
+
+## Oneriler
+
+1. Complexity bazli uzman yonlendirme uygulanmali.
+2. Gun bazli kapasite planlama ile yogunluk gunleri dengelenmeli.
+3. Yuksek efor tuketen segmentler icin SLA ve otomasyon stratejileri gelistirilmeli.
+
+## Proje Yapisi
+
+- `EffortScope.ipynb`: Ana analiz notebook'u
+- `REPORT.md`: Teknik ve is odakli proje raporu
+- `data/raw/customer_support_tickets.csv`: Yerel veri kopyasi
+- `data/reports/column_profile.csv`: Kolon ozet raporu
+- `data/reports/column_profile.md`: Kolon bazli markdown aciklamalari
+- `data/reports/column_profile.html`: Kolon profilinin HTML gorunumu
+- `data/reports/dataset_preview.csv`: Ilk 100 satirlik veri onizlemesi
+- `data/reports/column_missingness.png`: Eksik veri gorseli
+- `data/reports/column_uniques.png`: Benzersiz deger sayisi gorseli

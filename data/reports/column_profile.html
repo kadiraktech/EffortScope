@@ -1,0 +1,266 @@
+<html><head><meta charset='utf-8'><title>Column Profile</title></head><body><h1>EffortScope Column Profile</h1><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>column_name</th>
+      <th>dtype</th>
+      <th>non_null_count</th>
+      <th>null_count</th>
+      <th>null_percentage</th>
+      <th>unique_count</th>
+      <th>sample_values</th>
+      <th>detected_role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>language</td>
+      <td>str</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>de | en</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>priority</td>
+      <td>str</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>3</td>
+      <td>high | medium | low</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>queue</td>
+      <td>str</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>10</td>
+      <td>Technical Support | Returns and Exchanges | Billing and Payments | Sales and Pre-Sales | Service Outages and Maintenance</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>tag_1</td>
+      <td>str</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>116</td>
+      <td>Security | Account | Product | Billing | Feature</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>tag_2</td>
+      <td>str</td>
+      <td>28574</td>
+      <td>13</td>
+      <td>0.05</td>
+      <td>256</td>
+      <td>Outage | Disruption | Feature | Payment | Product</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>tag_3</td>
+      <td>str</td>
+      <td>28451</td>
+      <td>136</td>
+      <td>0.48</td>
+      <td>392</td>
+      <td>Disruption | Outage | Tech Support | Account | Feedback</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>tag_4</td>
+      <td>str</td>
+      <td>25529</td>
+      <td>3058</td>
+      <td>10.70</td>
+      <td>554</td>
+      <td>Data Breach | IT | Documentation | Tech Support | Feedback</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>tag_5</td>
+      <td>str</td>
+      <td>14545</td>
+      <td>14042</td>
+      <td>49.12</td>
+      <td>602</td>
+      <td>Tech Support | Feedback | Compatibility | Disruption | Automation</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>tag_6</td>
+      <td>str</td>
+      <td>5874</td>
+      <td>22713</td>
+      <td>79.45</td>
+      <td>575</td>
+      <td>Outage | Organization | Tech Support | IT | Microservice</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>tag_7</td>
+      <td>str</td>
+      <td>2040</td>
+      <td>26547</td>
+      <td>92.86</td>
+      <td>427</td>
+      <td>Tech Support | Campaign | Workflow | Connection | Troubleshooting</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>tag_8</td>
+      <td>str</td>
+      <td>565</td>
+      <td>28022</td>
+      <td>98.02</td>
+      <td>224</td>
+      <td>Tech Support | Ink | Maintenance | IT | Healthcare</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td>str</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>4</td>
+      <td>Incident | Request | Problem | Change</td>
+      <td>categorical</td>
+    </tr>
+    <tr>
+      <td>complexity_score</td>
+      <td>float64</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>1773</td>
+      <td>1.506 | 1.291 | 1.196 | 1.341 | 1.5</td>
+      <td>generated_feature</td>
+    </tr>
+    <tr>
+      <td>created_at_clean</td>
+      <td>datetime64[us]</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>365</td>
+      <td>2025-02-02 | 2025-10-10 | 2025-08-27 | 2025-06-10 | 2025-06-08</td>
+      <td>generated_feature</td>
+    </tr>
+    <tr>
+      <td>created_day_of_week</td>
+      <td>str</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>7</td>
+      <td>Sunday | Friday | Wednesday | Tuesday | Monday</td>
+      <td>generated_feature</td>
+    </tr>
+    <tr>
+      <td>customer_name</td>
+      <td>str</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>10</td>
+      <td>ZenithCare | OrionTel | NovaTech | BlueOrbit | DataBridge</td>
+      <td>generated_feature</td>
+    </tr>
+    <tr>
+      <td>description_length</td>
+      <td>int64</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>908</td>
+      <td>751 | 544 | 534 | 605 | 677</td>
+      <td>generated_feature</td>
+    </tr>
+    <tr>
+      <td>is_weekend</td>
+      <td>int64</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1 | 0</td>
+      <td>generated_feature</td>
+    </tr>
+    <tr>
+      <td>resolution_time</td>
+      <td>float64</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>1509</td>
+      <td>8.35 | 13.37 | 14.87 | 13.15 | 14.29</td>
+      <td>generated_feature</td>
+    </tr>
+    <tr>
+      <td>word_count</td>
+      <td>int64</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>142</td>
+      <td>82 | 76 | 91 | 97 | 74</td>
+      <td>generated_feature</td>
+    </tr>
+    <tr>
+      <td>version</td>
+      <td>int64</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>3</td>
+      <td>51 | 52 | 400</td>
+      <td>numeric</td>
+    </tr>
+    <tr>
+      <td>effort_hours</td>
+      <td>float64</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>714</td>
+      <td>6.54 | 7.05 | 6.44 | 5.73 | 6.94</td>
+      <td>target</td>
+    </tr>
+    <tr>
+      <td>answer</td>
+      <td>str</td>
+      <td>28580</td>
+      <td>7</td>
+      <td>0.02</td>
+      <td>28580</td>
+      <td>Vielen Dank für die Meldung des... | Thank you for reaching out, &lt;name&gt;.... | Thank you for your inquiry. Our... | We appreciate you reaching out with... | Thank you for your inquiry. Our...</td>
+      <td>text</td>
+    </tr>
+    <tr>
+      <td>body</td>
+      <td>str</td>
+      <td>28587</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>28585</td>
+      <td>Sehr geehrtes Support-Team,\n\nich... | Dear Customer Support Team,\n\nI am... | Dear Customer Support Team,\n\nI hope... | Dear Customer Support Team,\n\nI hope... | Dear Support Team,\n\nI hope this...</td>
+      <td>text</td>
+    </tr>
+    <tr>
+      <td>subject</td>
+      <td>str</td>
+      <td>24749</td>
+      <td>3838</td>
+      <td>13.43</td>
+      <td>24749</td>
+      <td>Wesentlicher Sicherheitsvorfall | Account Disruption | Query About Smart Home System... | Inquiry Regarding Invoice Details | Question About Marketing Agency...</td>
+      <td>text</td>
+    </tr>
+  </tbody>
+</table></body></html>
