@@ -2,6 +2,34 @@
 
 EffortScope, customer support ticket verilerini kullanarak destek operasyonlarinda eforu, kaynak kullanimini ve musteri segmentlerini analiz eden bir veri bilimi projesidir. Proje; metin yogunlugu, oncelik seviyesi, zaman sinyalleri ve musteri bazli farkliliklar uzerinden hem analitik icgoru uretir hem de efor tahminleme yaklasimini gosterir.
 
+## 30 Saniyede Proje
+
+### Bu proje ne yapiyor?
+
+- Gercek support ticket metinleri ve operasyon kolonlari uzerinden EDA, NLP, segmentasyon ve tahminleme akisi kuruyor.
+- Ticket yogunlugu, complexity, priority ve segment farklarini gorunur hale getiriyor.
+- Helpdesk analizi icin tekrar calistirilabilir bir notebook ornegi sunuyor.
+
+### Bu proje ne yapmiyor?
+
+- Gercek operasyonel `effort_hours` veya dogrulanmis `resolution_time` tahmini yapmiyor.
+- Gercek musteri kimligi, gercek zaman damgasi veya gercek SLA verisi uzerinden calismiyor.
+- Uretildigi haliyle production-ready bir karar motoru oldugunu iddia etmiyor.
+
+## Sentetik Alan Uyarisi
+
+Asagidaki alanlar ham veri setinden gelmez; notebook icinde analitik demonstrasyon amaciyla uretilir veya simule edilir:
+
+- `effort_hours`
+- `resolution_time`
+- `customer_name`
+- `created_at_clean`
+- `created_day_of_week`
+- `created_hour`
+- `created_month`
+- `created_month_name`
+- `month_period`
+
 ## Proje Amaci
 
 Bu proje su sorulara veri odakli cevap uretmeyi hedefler:
@@ -25,7 +53,7 @@ Veri seti tipik olarak su alanlari icerir:
 - `language`
 - `tag_1` ... `tag_8`
 
-Veri setinde gercek `effort_hours` bulunmadigi icin proje kapsaminda sentetik ama tutarli hedef ve destekleyici feature'lar uretilmistir.
+Veri setinde gercek `effort_hours` bulunmadigi icin proje kapsaminda sentetik ama tutarli hedef ve destekleyici feature'lar uretilmistir. Bu nedenle proje, gercek operasyonel performans olcumunden cok analitik prototip ve demonstrasyon niteligindedir.
 
 ## Turetilen Ana Kolonlar
 

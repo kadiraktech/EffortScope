@@ -15,6 +15,31 @@ Alanlar iki ana gruba ayrilmistir:
 - `Raw`: Kaynak veri setinden dogrudan gelen alanlar
 - `Generated`: Notebook icinde feature engineering ile uretilen alanlar
 
+## Sentetik Alanlarin Ozeti
+
+Bu projede en kritik nokta sudur: butun `Generated` alanlar ayni seviyede degildir. Bazilari ham veriden dogrudan turetilmis yardimci ozelliklerdir, bazilari ise sentetik veya simule edilmis alanlardir.
+
+### Ham veriden turetilen ama sentetik olmayan alanlar
+
+- `description_length`
+- `word_count`
+- `complexity_score`
+- `is_weekend`
+
+### Sentetik veya simule edilen alanlar
+
+- `effort_hours`
+- `resolution_time`
+- `customer_name`
+- `created_at_clean`
+- `created_day_of_week`
+- `created_hour`
+- `created_month`
+- `created_month_name`
+- `month_period`
+
+Bu ikinci grup, gercek operasyon verisi olmadigi icin notebook icinde analitik demonstrasyon amaciyla uretilmistir. Bu alanlara dayanan bulgular, gercek KPI olcumu degil prototip yorum olarak okunmalidir.
+
 ## Alanlar
 
 Bu bolum daha rahat okunabilsin diye gruplandirilmis durumda. Once ham veri alanlari, sonra notebook icinde uretilen alanlar verilir.
@@ -65,21 +90,21 @@ Bu alanlar ticket'in teknik veya konu bazli alt siniflarini gosterir. `tag_1` en
 
 Bu alanlar ham veri setinde yoktur. Analiz, gorsellestirme ve modelleme amaciyla notebook icinde uretilmistir.
 
-| Alan | Tip | Nasil Uretildi? | Ornek | Analizde Kullanim |
-| --- | --- | --- | --- | --- |
-| `description_length` | `int64` | `body` metninin karakter sayisi alinarak | `751` | Metin yogunlugu, complexity sinyali |
-| `word_count` | `int64` | `body` icindeki kelime sayisi hesaplanarak | `82` | Efor modeli, NLP yorumlari |
-| `complexity_score` | `float64` | Metin uzunlugu, kelime sayisi ve `priority` birlestirilerek | `1.506` | Korelasyon, efor analizi, modelleme |
-| `created_at_clean` | `datetime64` | Tarih kolonundan temizlenerek veya simule edilerek | `2025-02-02 13:00:00` | Tum zaman bazli analizlerin temeli |
-| `created_day_of_week` | `str` | `created_at_clean` uzerinden gun adi turetilerek | `Wednesday` | Gun bazli yogunluk, kapasite planlama |
-| `created_hour` | `int64` | `created_at_clean` uzerinden saat bilgisi alinarak | `13` | Gun-saat heatmap, vardiya yorumu |
-| `created_month` | `int64` | `created_at_clean` uzerinden ay numarasi alinarak | `2` | Aylik trend ve mevsimsellik |
-| `created_month_name` | `category` | Ay numarasinin ay ismine cevrilmesiyle | `Feb` | Aylik grafikler ve mevsimsellik yorumu |
-| `month_period` | `str` | Tarihin `YYYY-MM` formatina cevrilmesiyle | `2025-02` | Aylik toplulasma ve raporlama |
-| `is_weekend` | `int64` | Gun bilgisinden hafta sonu olup olmadigi belirlenerek | `0`, `1` | Hafta ici / hafta sonu karsilastirmasi |
-| `customer_name` | `str` | Segmentasyon icin sentetik musteri etiketi atanarak | `ZenithCare` | Musteri bazli Pareto, clustering |
-| `effort_hours` | `float64` | Metin yogunlugu + priority + kontrollu noise ile | `6.54` | Ana hedef degisken, Pareto, boxplot, regresyon |
-| `resolution_time` | `float64` | `effort_hours` ile iliskili ikinci sentetik metrik olarak | `8.35` | Operasyonel sure yorumu, modelleme |
+| Alan | Tip | Durum | Nasil Uretildi? | Ornek | Analizde Kullanim |
+| --- | --- | --- | --- | --- | --- |
+| `description_length` | `int64` | Turetilmis | `body` metninin karakter sayisi alinarak | `751` | Metin yogunlugu, complexity sinyali |
+| `word_count` | `int64` | Turetilmis | `body` icindeki kelime sayisi hesaplanarak | `82` | Efor modeli, NLP yorumlari |
+| `complexity_score` | `float64` | Turetilmis | Metin uzunlugu, kelime sayisi ve `priority` birlestirilerek | `1.506` | Korelasyon, efor analizi, modelleme |
+| `created_at_clean` | `datetime64` | Simule / Sentetik | Tarih kolonundan temizlenerek veya simule edilerek | `2025-02-02 13:00:00` | Tum zaman bazli analizlerin temeli |
+| `created_day_of_week` | `str` | Simule / Sentetik | `created_at_clean` uzerinden gun adi turetilerek | `Wednesday` | Gun bazli yogunluk, kapasite planlama |
+| `created_hour` | `int64` | Simule / Sentetik | `created_at_clean` uzerinden saat bilgisi alinarak | `13` | Gun-saat heatmap, vardiya yorumu |
+| `created_month` | `int64` | Simule / Sentetik | `created_at_clean` uzerinden ay numarasi alinarak | `2` | Aylik trend ve mevsimsellik |
+| `created_month_name` | `category` | Simule / Sentetik | Ay numarasinin ay ismine cevrilmesiyle | `Feb` | Aylik grafikler ve mevsimsellik yorumu |
+| `month_period` | `str` | Simule / Sentetik | Tarihin `YYYY-MM` formatina cevrilmesiyle | `2025-02` | Aylik toplulasma ve raporlama |
+| `is_weekend` | `int64` | Turetilmis / Kismen simule | Gun bilgisinden hafta sonu olup olmadigi belirlenerek | `0`, `1` | Hafta ici / hafta sonu karsilastirmasi |
+| `customer_name` | `str` | Sentetik | Segmentasyon icin sentetik musteri etiketi atanarak | `ZenithCare` | Musteri bazli Pareto, clustering |
+| `effort_hours` | `float64` | Sentetik | Metin yogunlugu + priority + kontrollu noise ile | `6.54` | Ana hedef degisken, Pareto, boxplot, regresyon |
+| `resolution_time` | `float64` | Sentetik | `effort_hours` ile iliskili ikinci sentetik metrik olarak | `8.35` | Operasyonel sure yorumu, modelleme |
 
 ## Kritik Notlar
 
