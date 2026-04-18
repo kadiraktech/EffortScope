@@ -49,6 +49,14 @@ Veri setinin kritik siniri, gercek `effort_hours` veya dogrulanmis cozum suresi 
 - Tarih bilgisinden veya kontrollu simulasyondan uretilmistir.
 - Talebin haftanin hangi gunlerinde yogunlastigini gosterir.
 
+### `created_hour`
+- Ticket'in gun icindeki acilis saatini gosterir.
+- Gun-saat yogunluk heatmap'i ve vardiya planlama yorumlari icin kullanilir.
+
+### `created_month_name`
+- Tarih bilgisinden turetilen aylik kategoridir.
+- Mevsimsellik ve aylik talep trendi analizinde kullanilir.
+
 ### `is_weekend`
 - Ticket'in hafta sonu acilip acilmadigini belirten ikili degiskendir.
 - Hafta ici ve hafta sonu yuklerini karsilastirmaya yardimci olur.
@@ -66,6 +74,12 @@ En yuksek ortalama efor tuketen musteriler arasinda `PeakLogistics`, `AtlasWorks
 
 ### Yogunluk Gunleri
 Haftalik dagilimda en yuksek ticket hacmi `Wednesday` gununde gorulmustur (`4,175` ticket). Hafta sonu ortalama eforu ile hafta ici ortalama efor birbirine cok yakindir; bu da hacim dagilimi farkli olsa bile birim ticket zorlugunun buyuk fark gostermedigini dusundurur.
+
+### Mevsimsellik ve Gun-Saat Yogunlugu
+Notebook'a eklenen gun-saat heatmap'i, destek talebinin sadece gun bazinda degil saat bazinda da belirli bloklarda toplandigini gorunur hale getirmektedir. Aylik trend grafigi ise yil icinde bazi aylarin digerlerine gore daha yuksek ticket hacmi uretebildigini gostererek mevsimsellik yorumunu guclendirir.
+
+### Is Turu Bazli Dagilim
+Is turu veya kuyruk bazli boxplot analizi, bazi kategorilerde ortanca eforun daha yuksek oldugunu ve dagilimin daha genis oldugunu gostermektedir. Bu durum, belirli is tiplerinin daha degisken operasyonel maliyet urettigine isaret eder.
 
 ### Segmentasyon (KMeans)
 `KMeans (n_clusters=4)` ile yapilan musteri segmentasyonu, ortalama efor, ortalama cozum suresi, complexity, ticket sayisi ve hafta sonu orani gibi degiskenler uzerinden yapilmistir. Sonuclar, bazi segmentlerin digerlerine gore daha pahali destek profili tasidigini gosterir.
@@ -102,6 +116,8 @@ Teknik not: RMSE compatibility helper was used to support different scikit-learn
 - `complexity_score` ile `effort_hours` arasinda guclu pozitif iliski vardir.
 - Priority seviyesi yukselince ortalama efor artar.
 - Ticket hacmi haftanin belirli gunlerinde yogunlasir; en yuksek hacim `Wednesday` gunundedir.
+- Musteri bazli Pareto analizi, toplam eforun bazi musteri gruplarinda yogunlastigini gosterir.
+- Gun-saat heatmap'i ve aylik trend grafigi, zaman bazli kapasite planlamanin gerekli oldugunu destekler.
 - Bazi musteri segmentleri digerlerine gore daha yuksek ortalama efor ureterek orantisiz kaynak tuketir.
 - Ust seviye tag alanlarindaki eksiklik, ileri kategorik raporlamayi sinirlandirmaktadir.
 
@@ -113,8 +129,8 @@ Teknik not: RMSE compatibility helper was used to support different scikit-learn
 
 ## Oneri 2 ? Gun Bazli Kapasite Planlama
 - Problem: Ticket hacmi haftaya esit dagilmamaktadir.
-- Veriyle gozlem: En yuksek hacim `Wednesday` gununde gorulmustur.
-- Cozum: Vardiya ve back-up kapasite planlari gun bazli hacim desenine gore optimize edilmelidir.
+- Veriyle gozlem: En yuksek hacim `Wednesday` gununde gorulmustur; gun-saat heatmap'i de belirli zaman bloklarinda yogunlasma oldugunu gostermektedir.
+- Cozum: Vardiya ve back-up kapasite planlari gun ve saat bazli hacim desenine gore optimize edilmelidir.
 - Etki: Backlog birikimi ve SLA sapmasi riski azalir.
 
 ## Oneri 3 ? Yuksek Eforlu Segmentler Icin SLA Gozden Gecirme
@@ -131,7 +147,8 @@ Ana bulgular sunlardir:
 
 - complexity arttikca effort belirgin bicimde artmaktadir
 - bazi musteri segmentleri daha yuksek kaynak tuketmektedir
-- ticket hacmi haftanin belirli gunlerinde yogunlasmaktadir
+- ticket hacmi haftanin belirli gunlerinde ve belirli saat bloklarinda yogunlasmaktadir
+- aylik trend analizi mevsimsellik yorumunu desteklemektedir
 - en iyi model Gradient Boosting olmustur
 
-Is etkisi acisindan proje; kapasite planlama, uzman yonlendirme ve segment bazli SLA tasarimi icin guclu bir analitik temel sunmaktadir. Ancak hedef degisken sentetik oldugu icin sonuclar, gercek operasyonel performans vaadi olarak degil karar destek ve analitik prototip olarak degerlendirilmelidir.
+Is etkisi acisindan proje; kapasite planlama, uzman yonlendirme ve segment bazli SLA tasarimi icin daha guclu bir analitik temel sunmaktadir. Ancak hedef degisken sentetik oldugu icin sonuclar, gercek operasyonel performans vaadi olarak degil karar destek ve analitik prototip olarak degerlendirilmelidir.

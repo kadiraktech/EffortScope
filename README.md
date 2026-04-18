@@ -36,6 +36,8 @@ Veri setinde gercek `effort_hours` bulunmadigi icin proje kapsaminda sentetik am
 - `complexity_score`: Aciklama yogunlugu ve priority bazli karmasiklik skoru
 - `customer_name`: Musteri bazli segmentasyon icin sentetik kurumsal etiket
 - `created_day_of_week`: Ticket'in haftanin hangi gunune dustugu
+- `created_hour`: Gun ici is yukunun hangi saatlerde toplandigini gosterir
+- `created_month_name`: Aylik talep yogunlugu ve mevsimsellik analizi icin kullanilir
 - `is_weekend`: Hafta sonu bayragi
 
 ## Notebook Kapsami
@@ -48,7 +50,7 @@ Veri setinde gercek `effort_hours` bulunmadigi icin proje kapsaminda sentetik am
 - Veri temizleme ve eksik veri analizi
 - Feature engineering
 - NLP analizi
-- EDA, Pareto, heatmap ve boxplot
+- EDA, musteri bazli Pareto, gun-saat heatmap, aylik trend ve is turu boxplot
 - KMeans ile musteri segmentasyonu
 - Regresyon modelleme ve model karsilastirma
 - Feature importance, insights, oneriler ve executive summary
@@ -83,6 +85,7 @@ Teknik not: RMSE compatibility helper was used to support different scikit-learn
 - Uzun ve detayli aciklamalar daha yuksek efor gerektirir.
 - Priority seviyesi arttikca ortalama efor da artar.
 - En yuksek ticket hacmi `Wednesday` gununde gorulmustur.
+- Aylik trend ve gun-saat heatmap'i, talep yogunlugunun zaman icinde dengeli dagilmadigini gosterir.
 - Bazi musteri segmentleri digerlerine gore daha yuksek ortalama efor tuketmektedir.
 
 ## Oneriler
@@ -94,6 +97,7 @@ Teknik not: RMSE compatibility helper was used to support different scikit-learn
 ## Proje Yapisi
 
 - `EffortScope.ipynb`: Ana analiz notebook'u
+- `DATA_DICTIONARY.md`: Ham ve turetilmis alanlar icin resmi veri sozlugu
 - `REPORT.md`: Teknik ve is odakli proje raporu
 - `data/raw/customer_support_tickets.csv`: Yerel veri kopyasi
 - `data/reports/column_profile.csv`: Kolon ozet raporu
